@@ -7,9 +7,11 @@ import seaborn as sns
 
 
 st.title("Data Analisis pada Dataset Peminjaman Sepeda")
+day_url = "https://raw.githubusercontent.com/ARiP001/Bike-Sharing-Data-Analyst/main/data/day.csv"
+hour_url = "https://raw.githubusercontent.com/ARiP001/Bike-Sharing-Data-Analyst/main/data/hour.csv"
 
-day_df = pd.read_csv("../data/day.csv")
-hour_df = pd.read_csv("../data/hour.csv")
+day_df = pd.read_csv(day_url)
+hour_df = pd.read_csv(hour_url)
 st.write("Ringkasan Statistik:")
 st.dataframe(day_df.describe())
 
