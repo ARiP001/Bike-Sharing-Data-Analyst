@@ -7,8 +7,8 @@ sns.set(style='dark')
 
 
 st.title("Data Analisis pada Dataset Peminjaman Sepeda")
-day_url = "day.csv"
-hour_url = "hour.csv"
+day_url = ".dashboard/data/day.csv"
+hour_url = ".dashboard/data/hour.csv"
 
 day_df = pd.read_csv(day_url)
 hour_df = pd.read_csv(hour_url)
