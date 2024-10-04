@@ -7,13 +7,11 @@ sns.set(style='dark')
 
 
 st.title("Data Analisis pada Dataset Peminjaman Sepeda")
-day_url = ".dashboard/day.csv"
-hour_url = ".dashboard/hour.csv"
+data_url = "main_data.csv"
 
-day_df = pd.read_csv(day_url)
-hour_df = pd.read_csv(hour_url)
+data_df = pd.read_csv(data_url)
 st.write("Ringkasan Statistik:")
-st.dataframe(day_df.describe())
+st.dataframe(data_df.describe())
 
 # Sidebar
 st.sidebar.header("Navigasi")
