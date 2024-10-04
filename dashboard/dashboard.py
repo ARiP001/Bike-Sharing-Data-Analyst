@@ -6,14 +6,14 @@ sns.set(style='dark')
 
 
 
-# st.title("Data Analisis pada Dataset Peminjaman Sepeda")
-# day_url = "https://raw.githubusercontent.com/ARiP001/Bike-Sharing-Data-Analyst/main/data/day.csv"
-# hour_url = "https://raw.githubusercontent.com/ARiP001/Bike-Sharing-Data-Analyst/main/data/hour.csv"
+st.title("Data Analisis pada Dataset Peminjaman Sepeda")
+day_url = "day.csv"
+hour_url = "hour.csv"
 
-# day_df = pd.read_csv(day_url)
-# hour_df = pd.read_csv(hour_url)
-# st.write("Ringkasan Statistik:")
-# st.dataframe(day_df.describe())
+day_df = pd.read_csv(day_url)
+hour_df = pd.read_csv(hour_url)
+st.write("Ringkasan Statistik:")
+st.dataframe(day_df.describe())
 
 # Sidebar
 st.sidebar.header("Navigasi")
