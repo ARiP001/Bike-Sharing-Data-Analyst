@@ -7,7 +7,7 @@ sns.set(style='dark')
 
 
 st.title("Data Analisis pada Dataset Peminjaman Sepeda")
-data_url = "main_data.csv"
+data_url = ".dashboard\main_data.csv"
 
 data_df = pd.read_csv(data_url)
 st.write("Ringkasan Statistik:")
