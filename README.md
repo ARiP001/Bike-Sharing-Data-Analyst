@@ -6,6 +6,7 @@
 - `main_data.csv`: Contains cleaned CSV data files.
 - `notebook.ipnyb`: Python script for data processing, exploratory data, explanatory data and answering analysis questions.
 - `dashboard.py`: Streamlit dashboard application.
+- `requirements.txt`: Contains python module that used to run this project.
 
 ## Installation
 1. Clone this repository to your local machine:
