@@ -5,7 +5,7 @@ import seaborn as sns
 import streamlit as st
 
 
-data_file = './dashboard/main_data.csv'
+data_file = r'.\dashboard\main_data.csv'
 
 # Fungsi untuk memuat dataset
 @st.cache_data
