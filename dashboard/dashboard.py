@@ -3,25 +3,35 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 import streamlit as st
-from io import StringIO
 
-uploaded_file = st.file_uploader("main_data.csv")
-if uploaded_file is not None:
-    # To read file as bytes:
-    bytes_data = uploaded_file.getvalue()
-    st.write(bytes_data)
+# Path ke file CSV lokal
+data_file = 'dashboard/main_data.csv'
 
-    # To convert to a string based IO:
-    stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
-    st.write(stringio)
+# Fungsi untuk memuat dataset
+@st.cache_data
+def load_data():
+    try:
+        # Baca dataset CSV
+        df = pd.read_csv(data_file)
 
-    # To read file as string:
-    string_data = stringio.read()
-    st.write(string_data)
+        # Hapus kolom 'No' jika ada
+        if 'No' in df.columns:
+            df = df.drop(['No'], axis=1)
 
-    # Can be used wherever a "file-like" object is accepted:
-    dataframe = pd.read_csv(uploaded_file)
-    st.write(dataframe)
+        return df
+    except FileNotFoundError:
+        st.warning(f"File tidak ditemukan di path: {data_file}")
+        return None
+
+# Panggil fungsi untuk memuat data
+data = load_data()
+
+# Periksa apakah data berhasil dimuat
+if data is not None:
+    st.write("Berikut adalah beberapa baris dari dataset:")
+    st.write(data.head())  # Tampilkan beberapa baris pertama dari dataset
+else:
+    st.error("Data gagal dimuat. Periksa path file CSV.")
 
 
 # # Periksa apakah data berhasil dimuat
