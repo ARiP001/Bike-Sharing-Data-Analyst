@@ -5,7 +5,7 @@ import seaborn as sns
 import streamlit as st
 
 
-data_file = r'./dashboard/main_data.csv
+data_file = r'./dashboard/main_data.csv'
 
 @st.cache_data
 def load_data():
