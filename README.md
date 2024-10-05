@@ -1,7 +1,8 @@
 # Bike-Sharing-Data-Analyst
 
 ## Project Structure
-- `dataset/`: Directory containing the raw CSV data files.
+- `data/`: Directory containing the raw CSV data files.
+- `main_data.csv`: contain the CSV data files that already been cleaned
 - `notebook.ipnyb`: Python scripts for data wrangling, EDA, and answering analysis questions.
 - `dashboard.py`: The Streamlit dashboard application.
 - `README.md`: This documentation file.
