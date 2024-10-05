@@ -9,7 +9,7 @@
 ## Installation
 1. Clone this repository to your local machine:
 ```
-git clone [https://github.com/yourusername/air-quality-analysis.git](https://github.com/ARiP001/Bike-Sharing-Data-Analyst)
+git clone https://github.com/ARiP001/Bike-Sharing-Data-Analyst
 ```
 2. Install the required Python packages by running:
 ```
