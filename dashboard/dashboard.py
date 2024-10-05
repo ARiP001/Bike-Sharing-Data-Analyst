@@ -5,26 +5,31 @@ import seaborn as sns
 import streamlit as st
 
 
-data_file = r'./dashboard/main_data.csv'
+data_file = 'main_data.csv'
 
+# Fungsi untuk memuat dataset
 @st.cache_data
 def load_data():
+    # Periksa apakah file tersebut ada
     if os.path.isfile(data_file):
+        # Baca dataset CSV
         df = pd.read_csv(data_file)
 
+        # Hapus kolom 'No' jika ada
         if 'No' in df.columns:
             df = df.drop(['No'], axis=1)
-          
-        df['datetime'] = pd.to_datetime(df[['year', 'month', 'day', 'hour']])
-        
+            
         return df
     else:
         st.warning(f"File tidak ditemukan di path: {data_file}")
         return None
+
+# Panggil fungsi untuk memuat data
 data = load_data()
 
+# Periksa apakah data berhasil dimuat
 if data is not None:
-    st.write(data.head())
+    st.write(data.head())  # Tampilkan beberapa baris pertama dari dataset
 else:
     st.error("Data gagal dimuat. Periksa path file CSV.")
 
