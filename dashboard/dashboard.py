@@ -5,7 +5,7 @@ import seaborn as sns
 import streamlit as st
 
 # Path ke file CSV lokal
-data_file = 'dashboard/min_data.csv'
+data_file = 'main_data.csv'
 
 # Fungsi untuk memuat dataset
 @st.cache_data
