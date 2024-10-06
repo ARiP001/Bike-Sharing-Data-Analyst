@@ -86,17 +86,14 @@ def plot_data_peminjaman(data):
     st.pyplot(plt)
     plt.clf()
 
-def plot_temperature_vs_rentals(data):
+def plot_temperature_vs_peminjaman(data):
     plt.figure(figsize=(10, 6))
 
-    # Scatter plot
     sns.scatterplot(data=data, x='apparent_temperature_y', y='count_y', color='blue', alpha=0.7)
-
-    # Regression line
     sns.regplot(data=data, x='apparent_temperature_y', y='count_y', scatter=False, color='red')
 
     plt.title('Hubungan antara Apparent Temperature dan Jumlah Peminjaman per Hari')
-    plt.xlabel('Suhu yang Terasa (°C)')
+    plt.xlabel('Suhu yang Terasa (berdasarkan skala dataset)')
     plt.ylabel('Jumlah Peminjaman')
     plt.grid()
 
@@ -104,11 +101,20 @@ def plot_temperature_vs_rentals(data):
     st.pyplot(plt)
     plt.clf()
 
+def angin_vs_peminjaman(data):
+    plt.figure(figsize=(10, 6))
+    sns.scatterplot(data=data, x='windspeed_y', y='count_y', hue='windspeed_category', palette='Set2', s=100)
+    plt.title('Clustering Kecepatan Angin dan Jumlah Peminjaman')
+    plt.xlabel('Kecepatan Angin (berdasarkan skala dataset)')
+    plt.ylabel('Jumlah Peminjaman')
+    plt.grid(True)
+    st.pyplot(plt) 
 
 st.sidebar.title("Menu")
-st.sidebar.markdown("[Perbandingan Casual dan Member](#perbandingan-pelanggan-casual-dan-member)")
+st.sidebar.markdown("[Perbandingan Casual dan Member](#perbandingan-pelanggan-casual-dan-member-tiap-musim)")
 st.sidebar.markdown("[Grafik Peminjaman Perbulan](#grafik-peminjaman-perbulan)")
-st.sidebar.markdown("[Korelasi Suhu dan Total Peminjaman](#korelasi-suhu-dan-total-peminjaman)")
+st.sidebar.markdown("[Pengaruh Suhu dan Total Peminjaman](#pengaruh-suhu-dan-total-peminjaman)")
+st.sidebar.markdown("[Pengaruh Kecepatan angin dan Total Peminjaman](#pengaruh-kecepatan-angin-dan-total-peminjaman)")
 
 
 st.write("# Analisis Data pada Dataset Penyewaan Sepeda")
@@ -122,7 +128,7 @@ else:
     st.error("Data gagal dimuat. Periksa path file CSV.")
 st.write("Ekstensi _x adalah data dari dataset jam sedangkan _y adalah data dari dataset hari")
 
-st.write("### Perbandingan Pelanggan Casual dan Member")
+st.write("### Perbandingan Pelanggan Casual dan Member tiap Musim")
 tampilkan_peminjaman_per_musim(data)
 st.write("""
 Analisis menunjukkan bahwa peminjam member mendominasi jumlah peminjaman sepeda dibandingkan peminjam kasual. Hal ini mengindikasikan bahwa member cenderung lebih sering menggunakan layanan ini.
@@ -140,8 +146,16 @@ Pada tahun kedua (2012), pola serupa terlihat dengan kenaikan peminjaman hingga 
 Tidak ada perbedaan signifikan dalam pola antara peminjaman casual dan member; keduanya menunjukkan tren yang hampir identik, dengan kenaikan awal tahun dan penurunan setelahnya.
 """)
 
-st.write("### Korelasi Suhu dan Total Peminjaman")
-plot_temperature_vs_rentals(data)
+st.write("### Pengaruh Suhu dan Total Peminjaman")
+plot_temperature_vs_peminjaman(data)
 st.write("""
 Grafik scatter menunjukkan persebaran data antara suhu yang terasa (apparent temperature) dan jumlah peminjaman sepeda, dengan garis regresi yang mengindikasikan bahwa peningkatan suhu berhubungan dengan peningkatan jumlah peminjaman. Terdapat korelasi positif yang cukup signifikan dimana semakin tinggi suhu, semakin tinggi jumlah peminjaman sepeda. Ini menunjukkan bahwa peminjaman cenderung meningkat pada hari yang lebih hangat.
+""")
+
+st.write("### Pengaruh Kecepatan angin dan Total Peminjaman")
+angin_vs_peminjaman(data)
+st.write("""
+Berdasarkan visualisasi persebaran data cenderung memadat pada kategori "Tenang" hingga "Berangin", ini menunjukkan bahwa jumlah peminjaman lebih banyak terjadi ketika kecepatan angin rendah atau sepoi-sepoi. Pada kondisi angin tersebut pengguna cenderung merasa lebih nyaman untuk bersepeda, yang berkontribusi pada tingginya jumlah peminjaman berulang. Sementara itu, saat kecepatan angin meningkat ke kategori "Angin Kencang," peminjaman berulang cenderung lebih sedikit, kemungkinan disebabkan oleh faktor ketidaknyamanan atau rasa tidak aman ketika bersepeda dalam kondisi cuaca yang lebih ekstrem. 
+
+Hal ini dapat menunjukkan hubungan negatif antara kecepatan angin yang tinggi dan aktivitas peminjaman sepeda.
 """)
