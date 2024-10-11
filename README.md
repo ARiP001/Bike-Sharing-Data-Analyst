@@ -1,4 +1,4 @@
-# Bike-Sharing-Data-Analyst
+# Bike-Sharing-Data-Analyst (finished repo)
 
 ## Project Structure
 - `README.md`: This documentation file.
